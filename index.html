@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>星穹铁道行动值计算器</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="page-header">
+        <p>Honkai: Star Rail</p>
+        <h1>星穹铁道行动值计算</h1>
+      </header>
+
+      <section id="characters" class="panel selector-panel">
+        <div class="section-head">
+          <div>
+            <h2>选择角色</h2>
+            <p>从全部角色中选取 1-4 个，卡片显示头像、名字和基础速度。</p>
+          </div>
+          <label class="search-box">
+            <span>搜索</span>
+            <input id="characterSearch" type="search" placeholder="输入角色名" autocomplete="off" />
+          </label>
+        </div>
+        <div class="selected-strip" id="selectedStrip" aria-live="polite"></div>
+        <div class="character-grid" id="characterGrid"></div>
+      </section>
+
+      <section id="settings" class="config-grid">
+        <div class="panel">
+          <div class="section-head compact">
+            <h2>具体速度</h2>
+          </div>
+          <div id="speedRows" class="speed-rows"></div>
+        </div>
+
+        <div class="panel">
+          <div class="section-head compact">
+            <h2>速度加成</h2>
+            <button id="clearAll" class="ghost-button" type="button">清空</button>
+          </div>
+          <div id="bonusPanel" class="bonus-panel"></div>
+        </div>
+      </section>
+
+      <section id="ahaPanel" class="aha-panel" aria-live="polite"></section>
+
+      <section id="timelineTabs" class="timeline-tabs" aria-label="行动值范围"></section>
+      <section id="timeline" class="timeline-grid" aria-live="polite"></section>
+    </main>
+
+    <script src="./data/characters.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
