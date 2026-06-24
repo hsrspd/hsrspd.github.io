@@ -268,6 +268,81 @@ h2 {
   outline: 0;
 }
 
+.battle-row {
+  display: grid;
+  grid-template-columns: minmax(150px, 1.2fr) repeat(4, minmax(72px, 0.75fr)) minmax(104px, 0.9fr);
+  gap: 8px;
+  align-items: end;
+  padding: 10px;
+  border-radius: var(--radius);
+  background: var(--panel-soft);
+  border: 1px solid transparent;
+}
+
+.skill-point-row {
+  display: grid;
+  grid-template-columns: auto minmax(120px, 160px) minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  padding: 10px;
+  border-radius: var(--radius);
+  background: rgba(7, 140, 255, 0.1);
+  border: 1px solid rgba(7, 140, 255, 0.28);
+}
+
+.skill-point-row label {
+  display: grid;
+  gap: 5px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.skill-point-row input {
+  width: 100%;
+  border: 1px solid #2c2a58;
+  border-radius: 7px;
+  background: #18162b;
+  color: var(--text);
+  padding: 8px 9px;
+  outline: 0;
+}
+
+.skill-point-row span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.skill-point-row b {
+  color: var(--blue);
+}
+
+.battle-row.tracked {
+  border-color: rgba(7, 140, 255, 0.28);
+}
+
+.battle-char {
+  align-self: center;
+}
+
+.battle-row label {
+  display: grid;
+  gap: 5px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.battle-row input,
+.battle-row select {
+  min-width: 0;
+  width: 100%;
+  border: 1px solid #2c2a58;
+  border-radius: 7px;
+  background: #18162b;
+  color: var(--text);
+  padding: 8px 9px;
+  outline: 0;
+}
+
 .arrow {
   color: var(--muted);
   text-align: center;
@@ -325,7 +400,7 @@ h2 {
 
 .timeline-tabs {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
   max-width: 1180px;
   margin-top: 16px;
@@ -449,6 +524,10 @@ h2 {
   background: #111820;
 }
 
+.action-row.with-snapshot {
+  align-items: start;
+}
+
 .action-row.first-cycle {
   border: 1px solid #5f5716;
   background: var(--gold-soft);
@@ -473,6 +552,15 @@ h2 {
   font-weight: 700;
 }
 
+.action-name em {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+}
+
 .action-time {
   color: #c6d2df;
   text-align: right;
@@ -482,6 +570,85 @@ h2 {
 .first-cycle .action-name,
 .first-cycle .action-time {
   color: var(--gold);
+}
+
+.snapshot {
+  grid-column: 3 / -1;
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  padding-top: 2px;
+}
+
+.snapshot-stats,
+.snapshot-meta,
+.buff-list,
+.damage-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.snapshot-stats span,
+.snapshot-meta span,
+.buff-list span,
+.damage-list span {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  min-width: 0;
+  padding: 5px 8px;
+  border-radius: 6px;
+  background: #17202b;
+  color: #cbd7e5;
+  font-size: 12px;
+}
+
+.snapshot-stats b,
+.damage-list b {
+  color: var(--blue);
+}
+
+.snapshot-stats .danger-stat {
+  background: rgba(255, 101, 122, 0.14);
+  color: #ff9aaa;
+}
+
+.snapshot-stats .danger-stat b {
+  color: #ff9aaa;
+}
+
+.snapshot-meta span {
+  color: var(--gold);
+  background: rgba(240, 213, 0, 0.09);
+}
+
+.buff-list span {
+  color: #9fd7ff;
+  background: rgba(7, 140, 255, 0.11);
+}
+
+.damage-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.damage-list span {
+  display: grid;
+  align-items: start;
+}
+
+.damage-list em {
+  color: var(--muted);
+  font-style: normal;
+  line-height: 1.4;
+}
+
+.snapshot p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
 }
 
 .note {
@@ -500,6 +667,18 @@ h2 {
   .config-grid,
   .timeline-grid {
     grid-template-columns: 1fr;
+  }
+
+  .battle-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .skill-point-row {
+    grid-template-columns: 1fr;
+  }
+
+  .battle-char {
+    grid-column: 1 / -1;
   }
 }
 
@@ -523,6 +702,10 @@ h2 {
     grid-template-columns: 1fr 94px;
   }
 
+  .battle-row {
+    grid-template-columns: 1fr;
+  }
+
   .speed-row .arrow,
   .speed-row .final-speed {
     display: none;
@@ -534,5 +717,13 @@ h2 {
 
   .timeline-tabs {
     grid-template-columns: 1fr;
+  }
+
+  .action-row {
+    grid-template-columns: 26px 30px minmax(0, 1fr) 58px;
+  }
+
+  .snapshot {
+    grid-column: 1 / -1;
   }
 }
